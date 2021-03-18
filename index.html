@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+  <link rel="stylesheet" href="/resources/demos/style.css" />
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <style>
         form {
             margin: 0 auto;
@@ -17,7 +21,7 @@
     </style>
 </head>
 <body>
-    <form action="https://script.google.com/macros/s/AKfycby9QpkNlGOZNIOBgI2MgZpkZmjtwRIW2RcaEtbvy0yhV3z8Ww9DlD35rXX3QmeIcyftrw/exec" method="get">
+    <form id="test-form">
         <div>
             <label for="">So tien</label>
             <input name="So Tien" type="text">
@@ -26,8 +30,48 @@
             <label for="">Loai Hang</label>
             <input name="Loai Hang" type="text">
         </div>    
-        <button>Gửi Dữ Liệu</button>
+        <button id="submit-form">Gửi Dữ Liệu</button>
+        <div id="message" style="
+          display: none;
+          height: 30px;
+          line-height: 30px;
+          margin: 0 auto;
+          text-align: center;
+          font-weight: bold;
+          font-size: 12px;
+          background-color: #34eb71;
+          color: black;
+          margin-bottom: 15px;
+        ">
+      Data have been sent to cloud.
+    </div>
     </form>
+    <Script>//aJAX
+
+        var $form = $("form#test-form"),
+          url =
+            "https://script.google.com/macros/s/AKfycby9QpkNlGOZNIOBgI2MgZpkZmjtwRIW2RcaEtbvy0yhV3z8Ww9DlD35rXX3QmeIcyftrw/exec";
+    
+        $("#submit-form").on("click", function (e) {
+          e.preventDefault();
+          var jqxhr = $.ajax({
+            url: url,
+            method: "GET",
+            dataType: "json",
+            data: $form.serializeArray(),
+          }).success;
+          // do something
+          $(document).ready(function () {
+            $(document).ready(function () {
+              // var newText = $("#myInput").val().split(" ");
+              $("#message").fadeIn("slow", function () {
+                $("#message").delay(5000).fadeOut();
+              });
+            });
+          });
+          console.log("sent thanh cong")();
+        });</Script>
+    
     
 </body>
 </html>
