@@ -1,42 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
   <link rel="stylesheet" href="/resources/demos/style.css" />
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <style>
-        form {
-            margin: 0 auto;
-            text-align: center;
-            padding:5px
-        }
-        div{
-            margin:0.5rem;
-            padding:0.5rem;
-        }
-    </style>
+  <style>
+    form {
+      margin: 0 auto;
+      text-align: center;
+      padding: 5px
+    }
+
+    div {
+      margin: 0.5rem;
+      padding: 0.5rem;
+    }
+  </style>
 </head>
+
 <body>
-    <form id="test-form">
-        <div>
-            <label for="">So tien</label>
-            <input name="So Tien" type="text">
-        </div>
-        <div>
-            <label for="">Loai Hang</label>
-            <input name="Loai Hang" type="text">
-        </div>    
-        <div>
-          <label for="">Thu nhập</label>
-          <input name="Thu Nhap" type="text">
-      </div>
-        <button id="submit-form">Gửi Dữ Liệu</button>
-        <a href="https://docs.google.com/spreadsheets/d/1-kTK562tfkc7rE3wv0OnnPStm16ggsVazPt3RRZ5_Hc/edit#gid=0">Đường dẫn</a>
-        <div id="message" style="
+  <form id="test-form">
+    <div>
+      <label for="">So tien</label>
+      <input name="So Tien" type="text">
+    </div>
+    <div>
+      <label for="">Loai Hang</label>
+      <input name="Loai Hang" type="text">
+    </div>
+    <div>
+      <label for="">Thu nhập</label>
+      <input name="Thu Nhap" type="text">
+    </div>
+    <div><select name="" id="">
+        <option value="Tiền lương">Tiền lương</option>
+        <option value="Tiền bán hàng" Tiền bán hàng></option>
+
+      </select>
+      <label for="">Loại thu nhập</label>
+      <input name="Loai Thu Nhap" type="text">
+    </div>
+    <button id="submit-form">Gửi Dữ Liệu</button>
+    <a href="https://docs.google.com/spreadsheets/d/1-kTK562tfkc7rE3wv0OnnPStm16ggsVazPt3RRZ5_Hc/edit#gid=0">Đường
+      dẫn</a>
+    <div id="message" style="
           display: none;
           height: 30px;
           line-height: 30px;
@@ -50,33 +62,34 @@
         ">
       Dữ liệu đã gửi thành công
     </div>
-    </form>
-    <Script>//aJAX
+  </form>
+  <Script>//aJAX
 
-        var $form = $("form#test-form"),
-          url =
-            "https://script.google.com/macros/s/AKfycby9QpkNlGOZNIOBgI2MgZpkZmjtwRIW2RcaEtbvy0yhV3z8Ww9DlD35rXX3QmeIcyftrw/exec";
-    
-        $("#submit-form").on("click", function (e) {
-          e.preventDefault();
-          var jqxhr = $.ajax({
-            url: url,
-            method: "GET",
-            dataType: "json",
-            data: $form.serializeArray(),
-          }).success;
-          // do something
-          $(document).ready(function () {
-            $(document).ready(function () {
-              // var newText = $("#myInput").val().split(" ");
-              $("#message").fadeIn("slow", function () {
-                $("#message").delay(5000).fadeOut();
-              });
-            });
+    var $form = $("form#test-form"),
+      url =
+        "https://script.google.com/macros/s/AKfycby9QpkNlGOZNIOBgI2MgZpkZmjtwRIW2RcaEtbvy0yhV3z8Ww9DlD35rXX3QmeIcyftrw/exec";
+
+    $("#submit-form").on("click", function (e) {
+      e.preventDefault();
+      var jqxhr = $.ajax({
+        url: url,
+        method: "GET",
+        dataType: "json",
+        data: $form.serializeArray(),
+      }).success;
+      // do something
+      $(document).ready(function () {
+        $(document).ready(function () {
+          // var newText = $("#myInput").val().split(" ");
+          $("#message").fadeIn("slow", function () {
+            $("#message").delay(5000).fadeOut();
           });
-          console.log("sent thanh cong")();
-        });</Script>
-    
-    
+        });
+      });
+      console.log("sent thanh cong")();
+    });</Script>
+
+
 </body>
+
 </html>
